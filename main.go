@@ -29,7 +29,7 @@ func geoIPFromRequest(r *http.Request) (g geoIP) {
 		r.Header.Get("X-GEO-CITY"),
 		r.Header.Get("X-GEO-CONTINENT-CODE"),
 		r.Header.Get("X-GEO-COUNTRY-CODE"),
-		r.Header.Get("X-GEO-COUNTRY-CODE-3"),
+		r.Header.Get("X-GEO-COUNTRY-CODE3"),
 		r.Header.Get("X-GEO-COUNTRY-NAME"),
 		r.Header.Get("X-GEO-POSTAL-CODE"),
 		r.Header.Get("X-GEO-REGION"),
@@ -51,7 +51,9 @@ func main() {
 			log.Println(err)
 			return
 		}
-		log.Print(string(j))
+		for k, v := range r.Header {
+			log.Println("key:", k, "value:", v)
+		}
 
 		w.Header().Set("Access-Control-Allow-Methods", "GET, OPTIONS, HEAD")
 		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding")
