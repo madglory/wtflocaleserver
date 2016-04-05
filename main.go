@@ -59,7 +59,7 @@ func main() {
 		w.Header().Set("Access-Control-Max-Age", "1728000")
 		w.Header().Set("Access-Control-Allow-Origin", "*")
 		w.Header().Set("Access-Control-Allow-Origin", "*")
-		w.Header().Set("Cache-Control", "public, max-age=900, stale-while-revalidate=604800, stale-if-error=604800")
+		w.Header().Set("Cache-Control", "public, max-age=0")
 
 		fmt.Fprint(w, string(j))
 	})
