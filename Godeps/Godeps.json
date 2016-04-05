@@ -1,0 +1,6 @@
+{
+	"ImportPath": "github.com/madglory/wtflocaleserver",
+	"GoVersion": "go1.6",
+	"GodepVersion": "v60",
+	"Deps": []
+}
