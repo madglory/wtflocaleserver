@@ -23,10 +23,8 @@ Fastly to set them using it's Headers feature or a custom VCL.
 Here's a screenshot of setting up the headers feature:
 ![Fastly](/docs/fastly.png)
 
-Here's about what the VCL should look like (YMMV):
+If you'd prefer a custom VCL, add this to the `vcl_recv` section.:
 ````
-sub vcl_recv {
-
   set req.http.X-GEO-LATITUDE = geoip.latitude
   set req.http.X-GEO-LONGITUDE = geoip.longitude
   set req.http.X-GEO-CITY = geoip.city
@@ -38,5 +36,4 @@ sub vcl_recv {
   set req.http.X-GEO-REGION = geoip.region
   set req.http.X-GEO-AREA-CODE = geoip.area_code
   set req.http.X-GEO-METRO-CODE = geoip.metro_code
-}
 ````
