@@ -1,0 +1,12 @@
+{
+  "name": "wtflocaleserver",
+  "description": "Gets locale information from CDN headers, returns it as JSON ",
+  "keywords": [
+    "i18n",
+    "locale"
+  ],
+  "image": "heroku/go:1.6",
+  "mount_dir": "src/github.com/madglory/wtflocaleserver",
+  "website": "http://github.com/madglory/wtflocaleserver",
+  "repository": "http://github.com/madglory/wtflocaleserver"
+}
