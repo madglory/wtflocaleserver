@@ -1,7 +1,29 @@
+# WTF Local Server
 
-go build cmd && $GOPATH/bin/wtflocalserver
+This is a small server, written in GO, that returns GEO location for use in
+client-side apps.
 
-VCL
+At the moment, it relies on Fastly's GEO IP looking, but could someday
+include something like MaxMind internally.
+
+## Development
+
+There are no external dependencies, so checkout the project into your $GOPATH and:
+
+    go build cmd && PORT=8000 $GOPATH/bin/wtflocalserver
+
+## Production
+
+I deploy this to Heroku on a Hobby dyno.  It can handle a few thousand requests
+per second with a ~20ms response time.
+
+In order to get the GEO information, we look for a series of headers set by Fastly.  You can ask
+Fastly to set them using it's Headers feature or a custom VCL.
+
+Here's a screenshot of setting up the headers feature:
+![Fastly](/docs/fastly.png)
+
+Here's about what the VCL should look like (YMMV):
 ````
 sub vcl_recv {
 
