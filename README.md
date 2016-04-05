@@ -1,4 +1,4 @@
-# WTF Local Server
+# WTF Locale Server
 
 This is a small server, written in GO, that returns GEO location for use in
 client-side apps.
@@ -10,7 +10,7 @@ include something like MaxMind internally.
 
 There are no external dependencies, so checkout the project into your $GOPATH and:
 
-    go build cmd && PORT=8000 $GOPATH/bin/wtflocalserver
+    go build cmd && PORT=8000 $GOPATH/bin/wtflocaleserver
 
 ## Production
 
