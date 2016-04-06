@@ -6,26 +6,31 @@ import (
 	"log"
 	"net/http"
 	"os"
+
+	"github.com/swhite24/go-locale/locale"
 )
 
 type geoIP struct {
-	AcceptLanguage string `json:"acceptLanguage"`
-	Latitude       string `json:"latitude"`
-	Longitude      string `json:"longitude"`
-	City           string `json:"city"`
-	ContinentCode  string `json:"continentCode"`
-	CountryCode    string `json:"countryCode"`
-	CountryCode3   string `json:"countryCode3"`
-	CountryName    string `json:"countryName"`
-	PostalCode     string `json:"postalCode"`
-	Region         string `json:"region"`
-	AreaCode       string `json:"areaCode"`
-	MetroCode      string `json:"metroCode"`
+	Language      string `json:"language"`
+	Latitude      string `json:"latitude"`
+	Longitude     string `json:"longitude"`
+	City          string `json:"city"`
+	ContinentCode string `json:"continentCode"`
+	CountryCode   string `json:"countryCode"`
+	CountryCode3  string `json:"countryCode3"`
+	CountryName   string `json:"countryName"`
+	PostalCode    string `json:"postalCode"`
+	Region        string `json:"region"`
+	AreaCode      string `json:"areaCode"`
+	MetroCode     string `json:"metroCode"`
 }
 
 func geoIPFromRequest(r *http.Request) (g geoIP) {
+	ls := locale.Read(r.Header.Get("Accept-Language"))
+	l := ls.Best()
+
 	return geoIP{
-		r.Header.Get("Accept-Language"),
+		l.Language,
 		r.Header.Get("X-GEO-LATITUDE"),
 		r.Header.Get("X-GEO-LONGITUDE"),
 		r.Header.Get("X-GEO-CITY"),
@@ -64,6 +69,7 @@ func main() {
 		w.Header().Set("Access-Control-Allow-Origin", "*")
 		w.Header().Set("Access-Control-Allow-Origin", "*")
 		w.Header().Set("Cache-Control", "public, max-age=0")
+		w.Header().Set("Content-Type", "application/json")
 
 		fmt.Fprint(w, string(j))
 	})
