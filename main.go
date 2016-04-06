@@ -9,21 +9,23 @@ import (
 )
 
 type geoIP struct {
-	Latitude      string `json:"latitude"`
-	Longitude     string `json:"longitude"`
-	City          string `json:"city"`
-	ContinentCode string `json:"continentCode"`
-	CountryCode   string `json:"countryCode"`
-	CountryCode3  string `json:"countryCode3"`
-	CountryName   string `json:"countryName"`
-	PostalCode    string `json:"postalCode"`
-	Region        string `json:"region"`
-	AreaCode      string `json:"areaCode"`
-	MetroCode     string `json:"metroCode"`
+	AcceptLanguage string `json:"acceptLanguage"`
+	Latitude       string `json:"latitude"`
+	Longitude      string `json:"longitude"`
+	City           string `json:"city"`
+	ContinentCode  string `json:"continentCode"`
+	CountryCode    string `json:"countryCode"`
+	CountryCode3   string `json:"countryCode3"`
+	CountryName    string `json:"countryName"`
+	PostalCode     string `json:"postalCode"`
+	Region         string `json:"region"`
+	AreaCode       string `json:"areaCode"`
+	MetroCode      string `json:"metroCode"`
 }
 
 func geoIPFromRequest(r *http.Request) (g geoIP) {
 	return geoIP{
+		r.Header.Get("Accept-Language"),
 		r.Header.Get("X-GEO-LATITUDE"),
 		r.Header.Get("X-GEO-LONGITUDE"),
 		r.Header.Get("X-GEO-CITY"),
