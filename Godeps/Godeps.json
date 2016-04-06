@@ -2,5 +2,10 @@
 	"ImportPath": "github.com/madglory/wtflocaleserver",
 	"GoVersion": "go1.6",
 	"GodepVersion": "v60",
-	"Deps": []
+	"Deps": [
+		{
+			"ImportPath": "github.com/swhite24/go-locale/locale",
+			"Rev": "98540afc487e24c07f5e0148ad2885b51c1eb64b"
+		}
+	]
 }
