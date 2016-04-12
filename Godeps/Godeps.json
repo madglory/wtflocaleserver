@@ -4,8 +4,12 @@
 	"GodepVersion": "v60",
 	"Deps": [
 		{
-			"ImportPath": "github.com/swhite24/go-locale/locale",
-			"Rev": "98540afc487e24c07f5e0148ad2885b51c1eb64b"
+			"ImportPath": "golang.org/x/text/internal/tag",
+			"Rev": "1b466db55e0ba5d56ef5315c728216b42f796491"
+		},
+		{
+			"ImportPath": "golang.org/x/text/language",
+			"Rev": "1b466db55e0ba5d56ef5315c728216b42f796491"
 		}
 	]
 }
